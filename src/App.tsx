@@ -1,34 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Route, Routes, Navigate } from 'react-router-dom'
 import './App.css'
+import ProtectedRoute from './components/ProtectedRoutes'
+import Auth from './pages/Auth'
+import VerifyOtp from './pages/VerifyOtp'
+import Dashboard from './pages/Dashboard'
+import { useMernAccess } from 'mern-access-client'
+import ResetPwd from './pages/ResetPwd'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { isLoading } = useMernAccess();
+
+  if (isLoading) {
+    return <div className='loader-page'>Loading...</div>;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/verify" element={<VerifyOtp />} />
+      <Route path="/reset" element={<ResetPwd />} />
+      <Route path="/" element={<Navigate to="/auth" replace />} />
+      <Route path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }
 
