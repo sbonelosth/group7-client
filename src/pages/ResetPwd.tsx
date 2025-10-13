@@ -33,33 +33,35 @@ const ResetPwd = () => {
     };
 
     return (
-        <div className="login-container">
-            <h2>Reset Password</h2>
-            <form id="login-form" onSubmit={onSubmit}>
-                <div className="input-group">
-                    <label htmlFor="otp">OTP</label>
-                    <input
-                        type="text"
-                        name="otp"
-                        required
-                        value={otp}
-                        onChange={e => setOtp(e.target.value)}
-                    />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="password">New Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        required
-                        value={newPassword}
-                        onChange={e => setNewPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit" id="submit-btn" disabled={isLoading}>
-                    {isLoading ? "Resetting password..." : "Reset Password"}
-                </button>
-            </form>
+        <div className="auth-container">
+            <div className="login-container">
+                <h2>Reset Password</h2>
+                <form id="login-form" onSubmit={onSubmit}>
+                    <div className="input-group">
+                        <label htmlFor="otp">OTP</label>
+                        <input
+                            type="text"
+                            name="otp"
+                            required
+                            value={otp}
+                            onChange={e => setOtp(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label htmlFor="password">New Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            required
+                            value={newPassword}
+                            onChange={e => setNewPassword(e.target.value)}
+                        />
+                    </div>
+                    <button type="submit" id="submit-btn" disabled={isLoading}>
+                        {isLoading ? "Resetting password..." : "Reset Password"}
+                    </button>
+                </form>
+            </div>
         </div>
     )
 }

@@ -23,22 +23,24 @@ function VerifyOtp() {
   };
 
   return (
-    <div className="otp-container">
-      <h2>Email Verification</h2>
-      <form id="otp-form" onSubmit={onSubmit}>
-        <div className="input-group">
-          <label htmlFor="otp">Enter OTP</label>
-          <input
-            type="text"
-            id="otp"
-            name="otp"
-            required
-            value={otp}
-            onChange={e => setOtp(e.target.value)}
-          />
-        </div>
-        <button type="submit" id="otp-btn">{isLoading ? "Verifying OTP..." : "Verify OTP"}</button>
-      </form>
+    <div className="auth-container">
+      <div className="otp-container">
+        <h2>Email Verification</h2>
+        <form id="otp-form" onSubmit={onSubmit}>
+          <div className="input-group">
+            <label htmlFor="otp">Enter OTP</label>
+            <input
+              type="text"
+              id="otp"
+              name="otp"
+              required
+              value={otp}
+              onChange={e => setOtp(e.target.value)}
+            />
+          </div>
+          <button type="submit" id="otp-btn">{isLoading ? "Verifying OTP..." : "Verify OTP"}</button>
+        </form>
+      </div>
     </div>
   )
 }
