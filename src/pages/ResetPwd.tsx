@@ -33,31 +33,39 @@ const ResetPwd = () => {
     };
 
     return (
-        <div className="auth-container">
-            <div className="login-container">
-                <h2>Reset Password</h2>
+        <div className="w-full h-screen flex flex-col justify-center items-center bg-[#2c3e5011] backdrop-blur-sm">
+            <div className="w-[420px] bg-[#e9e9e9] py-7 px-10 rounded-xl shadow-md text-center">
+                <h2 className="text-[#007bff] mb-6 text-xl font-bold">Reset Password</h2>
                 <form id="login-form" onSubmit={onSubmit}>
-                    <div className="input-group">
-                        <label htmlFor="otp">OTP</label>
+                    <div className="text-left mb-5">
+                        <label htmlFor="otp" className="block mb-1 text-[#555] font-bold">OTP</label>
                         <input
                             type="text"
                             name="otp"
                             required
                             value={otp}
                             onChange={e => setOtp(e.target.value)}
+                            className="w-full p-2.5 border border-[#ddd] rounded box-border font-mono text-center"
+                            maxLength={6}
                         />
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="password">New Password</label>
+                    <div className="text-left mb-5">
+                        <label htmlFor="password" className="block mb-1 text-[#555] font-bold">New Password</label>
                         <input
                             type="password"
                             name="password"
                             required
                             value={newPassword}
                             onChange={e => setNewPassword(e.target.value)}
+                            className="w-full p-2.5 border border-[#ddd] rounded box-border"
                         />
                     </div>
-                    <button type="submit" id="submit-btn" disabled={isLoading}>
+                    <button 
+                        type="submit" 
+                        id="submit-btn" 
+                        disabled={isLoading}
+                        className="w-full py-3 bg-[#007bff] text-white border-none rounded cursor-pointer text-base transition-colors hover:bg-[#0056b3] disabled:opacity-50"
+                    >
                         {isLoading ? "Resetting password..." : "Reset Password"}
                     </button>
                 </form>

@@ -6,12 +6,15 @@ import VerifyOtp from './pages/VerifyOtp'
 import Dashboard from './pages/Dashboard'
 import { useMernAccess } from 'mern-access-client'
 import ResetPwd from './pages/ResetPwd'
+import Loader from './pages/Loader'
 
 function App() {
   const { isLoading } = useMernAccess();
 
   if (isLoading) {
-    return <div className='loader-page'>Loading...</div>;
+    return (
+      <Loader />
+    );
   }
 
   return (

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useMernAccess } from 'mern-access-client'
 import { useNavigate } from 'react-router-dom'
-// Add this import if you use react-toastify
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -55,11 +54,11 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <h2>Welcome Back</h2>
+    <div className="w-[420px] bg-[#e9e9e9] py-7 px-10 rounded-bl-xl rounded-br-xl shadow-md text-center">
+      <h2 className="text-[#007bff] mb-6 text-xl font-bold">Welcome Back</h2>
       <form id="login-form" onSubmit={onSubmit}>
-        <div className="input-group">
-          <label htmlFor="username">Email or username</label>
+        <div className="text-left mb-5">
+          <label htmlFor="username" className="block mb-1 text-[#555] font-bold">Email or username</label>
           <input
             type="text"
             id="username"
@@ -68,10 +67,11 @@ function Login() {
             value={id}
             onChange={e => setId(e.target.value)}
             autoComplete="username"
+            className="w-full p-2.5 border border-[#ddd] rounded box-border"
           />
         </div>
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
+        <div className="text-left mb-5">
+          <label htmlFor="password" className="block mb-1 text-[#555] font-bold">Password</label>
           <input
             type="password"
             id="password"
@@ -80,12 +80,24 @@ function Login() {
             value={pw}
             onChange={e => setPw(e.target.value)}
             autoComplete="current-password"
+            className="w-full p-2.5 border border-[#ddd] rounded box-border"
           />
-          <div className="forgot-pwd" style={{ textAlign: 'right', marginTop: 10 }}>
-            <button type='button' onClick={handleForgotPassword}>Forgot password?</button>
+          <div className="text-right mt-2.5">
+            <button 
+              type='button' 
+              className="bg-none border-none text-[#0056b3] cursor-pointer p-0 text-base hover:underline"
+              onClick={handleForgotPassword}
+            >
+              Forgot password?
+            </button>
           </div>
         </div>
-        <button type="submit" id="submit-btn" disabled={isLoading}>
+        <button 
+          type="submit" 
+          id="submit-btn" 
+          disabled={isLoading}
+          className="w-full py-3 bg-[#007bff] text-white border-none rounded cursor-pointer text-base transition-colors hover:bg-[#0056b3]"
+        >
           {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>

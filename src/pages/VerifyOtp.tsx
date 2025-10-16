@@ -14,7 +14,7 @@ function VerifyOtp() {
     e.preventDefault();
     const res = await verify(id || "", otp);
     if (!res.success) {
-      toast.error(res.error?.error || "OTP verification failed");
+      toast.error(res.error || "OTP verification failed");
       return;
     }
 
@@ -23,12 +23,12 @@ function VerifyOtp() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="otp-container">
-        <h2>Email Verification</h2>
+    <div className="w-full h-screen flex flex-col justify-center items-center bg-[#2c3e5011] backdrop-blur-sm">
+      <div className="w-[420px] bg-[#e9e9e9] py-7 px-10 rounded-xl shadow-md text-center">
+        <h2 className="text-[#007bff] mb-6 text-xl font-bold">Email Verification</h2>
         <form id="otp-form" onSubmit={onSubmit}>
-          <div className="input-group">
-            <label htmlFor="otp">Enter OTP</label>
+          <div className="text-left mb-5">
+            <label htmlFor="otp" className="block mb-1 text-[#555] font-bold">Enter OTP</label>
             <input
               type="text"
               id="otp"
@@ -36,9 +36,17 @@ function VerifyOtp() {
               required
               value={otp}
               onChange={e => setOtp(e.target.value)}
+              className="w-full p-2.5 border border-[#ddd] rounded box-border font-mono text-center"
+              maxLength={6}
             />
           </div>
-          <button type="submit" id="otp-btn">{isLoading ? "Verifying OTP..." : "Verify OTP"}</button>
+          <button 
+            type="submit" 
+            id="otp-btn"
+            className="w-full py-3 bg-[#007bff] text-white border-none rounded cursor-pointer text-base transition-colors hover:bg-[#0056b3]"
+          >
+            {isLoading ? "Verifying OTP..." : "Verify OTP"}
+          </button>
         </form>
       </div>
     </div>
